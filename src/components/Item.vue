@@ -13,13 +13,13 @@
                y="40.136166"
                :text-decoration="done ? 'line-through' : ''"
         >
-          {{editableContent}}
+          {{editableContent || content}}
         </tspan>
       </text>
     </svg>
     <div class="input">
       <input type="checkbox" v-model="done"/>
-      <input type="text" ref="input" v-model="editableContent"/>
+      <input type="text" ref="input" v-model="editableContent" :placeholder="content"/>
       <button @click="savePng">Download as PNG</button>
       <button @click="viewPng">View as PNG</button>
     </div>
@@ -40,7 +40,7 @@
     },
     data () {
       return {
-        editableContent: this.content,
+        editableContent: '',
         done: false,
       }
     },
